@@ -32,4 +32,9 @@ public class GewinnModel {
     public int getRundenErgebnis() {
         return rundenErgebnis;
     }
+
+    /** Berechnet eine Zufallszahl von 1 bis 9 für den Computer. */
+    public void berechneComputerZahl() {
+        computerZahl = random.nextInt(9) + 1;
+    }
 }
