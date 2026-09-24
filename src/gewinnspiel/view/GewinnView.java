@@ -74,4 +74,50 @@ public class GewinnView extends JFrame {
         feld.setFont(new Font("SansSerif", Font.BOLD, 24));
         feld.setBackground(Color.WHITE);
     }
+
+    /** Registriert den Controller als Listener für Textfeld und Button. */
+    public void setController(ActionListener listener) {
+        txtSpieler.setActionCommand(CMD_EINGABE);
+        txtSpieler.addActionListener(listener);
+        btnNochmal.setActionCommand(CMD_NOCHMAL);
+        btnNochmal.addActionListener(listener);
+    }
+
+    /** @return der Text aus dem Eingabefeld */
+    public String getSpielerEingabe() {
+        return txtSpieler.getText();
+    }
+
+    /** Aktualisiert die Oberfläche nach einer ausgewerteten Runde. */
+    public void zeigeRunde(int computerZahl, int rundenErgebnis, int gesamt, boolean gewonnen, boolean verloren) {
+        txtComputer.setText(String.valueOf(computerZahl));
+        lblRunde.setText(rundenText(rundenErgebnis, gewonnen, verloren));
+        lblGesamt.setText(String.valueOf(gesamt));
+    }
+
+    /** @return Text für das Rundenergebnis-Label */
+    private String rundenText(int rundenErgebnis, boolean gewonnen, boolean verloren) {
+        if (gewonnen) {
+            return "Gewonnen";
+        }
+        if (verloren) {
+            return "Verloren";
+        }
+        if (rundenErgebnis > 0) {
+            return "+" + rundenErgebnis;
+        }
+        return String.valueOf(rundenErgebnis);
+    }
+
+    /** Löscht die Rundendaten, der Gesamtpunktestand bleibt stehen. */
+    public void zuruecksetzen() {
+        txtSpieler.setText("");
+        txtComputer.setText("");
+        lblRunde.setText(START_TEXT);
+    }
+
+    /** Zeigt eine Meldung in einem Dialog an. */
+    public void zeigeMeldung(String text) {
+        JOptionPane.showMessageDialog(this, text);
+    }
 }
