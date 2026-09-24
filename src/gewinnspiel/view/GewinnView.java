@@ -1,4 +1,4 @@
-package gewinnspiel;
+package gewinnspiel.view;
 
 public class GewinnView {
 }

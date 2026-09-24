@@ -1,4 +1,4 @@
-package gewinnspiel;
+package gewinnspiel.controller;
 
 public class GewinnController {
 }
