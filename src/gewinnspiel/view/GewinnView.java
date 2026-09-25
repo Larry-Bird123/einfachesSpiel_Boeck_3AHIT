@@ -96,6 +96,9 @@ public class GewinnView extends JFrame {
         lblGesamt.setText(String.valueOf(gesamt));
         txtSpieler.setEditable(false);
         btnNochmal.setEnabled(true);
+        Color farbe = ermittleFarbe(rundenErgebnis, gewonnen, verloren);
+        lblRunde.setBackground(farbe);
+        lblGesamt.setBackground(farbe);
     }
 
     /** @return Text für das Rundenergebnis-Label */
@@ -110,6 +113,17 @@ public class GewinnView extends JFrame {
             return "+" + rundenErgebnis;
         }
         return String.valueOf(rundenErgebnis);
+    }
+
+    /** @return grün bei Gewinn, rot bei Verlust, sonst weiß */
+    private Color ermittleFarbe(int rundenErgebnis, boolean gewonnen, boolean verloren) {
+        if (gewonnen || rundenErgebnis > 0) {
+            return Color.GREEN;
+        }
+        if (verloren || rundenErgebnis < 0) {
+            return Color.RED;
+        }
+        return Color.WHITE;
     }
 
     /** Löscht die Rundendaten, der Gesamtpunktestand bleibt stehen. */
