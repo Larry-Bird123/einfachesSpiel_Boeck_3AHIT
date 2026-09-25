@@ -23,6 +23,7 @@ public class GewinnView extends JFrame {
         lblRunde.setText(START_TEXT);
         lblGesamt.setText("Gesamtpunkte: " + startPunkte);
         txtComputer.setEditable(false);
+        btnNochmal.setEnabled(false);
         formatiereTextfeld(txtSpieler);
         formatiereTextfeld(txtComputer);
 
@@ -93,6 +94,8 @@ public class GewinnView extends JFrame {
         txtComputer.setText(String.valueOf(computerZahl));
         lblRunde.setText(rundenText(rundenErgebnis, gewonnen, verloren));
         lblGesamt.setText(String.valueOf(gesamt));
+        txtSpieler.setEditable(false);
+        btnNochmal.setEnabled(true);
     }
 
     /** @return Text für das Rundenergebnis-Label */
@@ -111,6 +114,8 @@ public class GewinnView extends JFrame {
 
     /** Löscht die Rundendaten, der Gesamtpunktestand bleibt stehen. */
     public void zuruecksetzen() {
+        txtSpieler.setEditable(true);
+        btnNochmal.setEnabled(false);
         txtSpieler.setText("");
         txtComputer.setText("");
         lblRunde.setText(START_TEXT);
